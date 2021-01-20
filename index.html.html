@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS Array Demo</title>
+<script language="javascript">
+	var names=["","","",""];
+	var ctr=-1; 
+	function addName()
+		{
+			
+			if (document.getElementById("txtName").value=="")
+				{
+					alert("Please enter any name.");
+					document.getElementById("txtName").focus();
+					return;
+				}
+			ctr+=1;
+			names[ctr]=document.getElementById("txtName").value;
+			alert("Name added in " + ctr + " pocket of names array.");
+			//alert(names[ctr]);
+			document.getElementById("txtName").value="";
+			document.getElementById("txtName").focus();
+			
+		}
+	function printName()
+		{
+			var str;
+			
+			str="<table border=1 width='200' align='center'><tr><td>names pocket</td><td>data</td></tr>";
+			
+			for(i=0;i<=ctr;i++)
+				{
+			str+="<tr><td>" + i + "</td><td>" + names[i] + "</td></tr>";
+				}
+			
+			str+="</table>";	
+			
+			document.getElementById("dataDiv").innerHTML=str;						
+				
+		}
+		function clearName()
+		{
+			document.getElementById("txtName").value = "";
+      		document.getElementById("dataDiv").style.visibility ="hidden";
+      		document.getElementById("txtName").focus();
+			  printName=printName.sort();
+		}
+
+
+</script>
+
+
+</head>
+
+<body>
+<h1 align="center">JavaScript Array Demo</h1>
+
+
+
+<table width="300" border="1" align="center">
+  
+  <tr>
+    <td>Enter Name</td>
+    <td><input type="text" id="txtName" /><br /> </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="3">
+    <input type="button" value="Add Name" onClick="addName()" />
+    <input type="button" value="Print" onClick="printName()" />
+	<input type="button" value="Clear" onClick="clearName()" /></td>
+
+  </tr>
+</table>
+<div id="dataDiv"></div>
+</body>
+</html>
